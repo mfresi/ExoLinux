@@ -1,0 +1,47 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+
+#define INVALID_SOCKET -1
+#define SOCKET_ERROR -1
+
+typedef int SOCKET;
+typedef struct sockaddr_in SOCKADDR_IN;
+typedef struct sockaddr SOCKADDR;
+
+SOCKET sock;
+
+sock = socket(AF_INET, SOCK_DGRAM, 0);
+
+if (sock == SOCKET_ERROR)
+{
+	fprintf(stderr, "socket() message %s\n", strerror(errno));
+}
+	SOCKADDR_IN destAddrUdp;
+	destAddrUdp.sin_addr = inet_addr("192.168.65.12");
+	destAddrUdp.sin_family = AF_INET;
+	destAddrUdp.sin_port = htons(9010);
+
+	char buffer[8];
+	buffer[0] = 'c';
+	buffer[1] = 'o';
+	buffer[2] = 'u';
+	buffer[3] = 'c';
+	buffer[4] = 'o';
+	buffer[5] = 'u';
+	buffer[6] = 0x0a;
+	buffer[7] = '\0';
+
+	socklen_t tailleudp = sizeof(destAddrUdp);
+	int error_message;
+	{
+		fprintf(stderr, "sendto message erreur : %d\n", strerror(errno));
+	}
+
+	close(sock);

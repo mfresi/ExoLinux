@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+class sendUDP{
+private:
+	SOCKET sock;
+public:
+	sendUDP();
+	bool createSocket();	bool connexion();
+	bool sendMsg(char * buffer, int length);
+	bool recupMsg(char * buffer, int length);
+	bool closeSocket();
+};
