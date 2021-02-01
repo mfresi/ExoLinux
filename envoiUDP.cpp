@@ -21,7 +21,7 @@ sock = socket(AF_INET, SOCK_DGRAM, 0);
 fprintf(stderr, "socket() message: %s\n", strerror(errno));
 
 SOCKADDR_IN destAddrUdp;
- destAddrUdp.sin_addr.s_addr = inet_addr("192.168.65.12");
+ destAddrUdp.sin_addr.s_addr = inet_addr("192.168.65.223");
  destAddrUdp.sin_family = AF_INET;
  destAddrUdp.sin_port = htons(9010);
 
