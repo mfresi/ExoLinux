@@ -16,6 +16,8 @@ typedef int SOCKET;
 typedef struct sockaddr_in  SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
 
+// Création de la classe sendUDP
+
 class sendUDP
 {
 

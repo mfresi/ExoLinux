@@ -18,9 +18,11 @@ typedef struct sockaddr SOCKADDR;
 
 SOCKADDR_IN InfoServer;
 
+// Mise en place d'une serveur UDP qui écoute sur le port 9013.
+
 int main()
 {
-
+// On créer le socket
 SOCKET sock;
 sock = socket(AF_INET, SOCK_DGRAM, 0);
 fprintf(stderr, "socket() message: %s\n", strerror(errno));
@@ -42,16 +44,19 @@ socklen_t fromlen = sizeof(_from);
 
 do 
 {
+    // Le server attend de recevoir une trame
     error_message = recvfrom(sock, buffer, 1500, 0, reinterpret_cast<sockaddr*>(&_from), &fromlen);
-
+    // Si le serveur reçoit "quit" alors on arrête le serveur
     if (buffer[0] != 'q' && buffer[1] != 'u' && buffer[2] != 'i' && buffer[3] != 't')
     {
+        // Gestion d'erreur
         if(error_message < 1)
         {
             fprintf(stderr, "socket() message: %s\n", strerror(errno));
         }
         else
         {
+            // On affiche l'ip machine de la machine ip source + le port sur laquelle elle est sorti + le message qu'elle a envoyé
             printf("\nIP : %s \n", inet_ntoa(_from.sin_addr));
             printf("Port : %d \n", ntohs(_from.sin_port));
             printf("Message reçu : %s \n\n", buffer);

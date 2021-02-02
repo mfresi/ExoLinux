@@ -14,8 +14,11 @@ typedef int SOCKET;
 typedef struct sockaddr_in SOCKADDR_IN;
 typedef struct sockaddr SOCKADDR;
 
+// Mise en place d'un client UDP qui envoie sur le port 9010
+
 int main()
 {
+// Création du socket
 SOCKET sock;
 sock = socket(AF_INET, SOCK_DGRAM, 0);
 fprintf(stderr, "socket() message: %s\n", strerror(errno));
@@ -24,7 +27,7 @@ SOCKADDR_IN destAddrUdp;
  destAddrUdp.sin_addr.s_addr = inet_addr("192.168.65.223");
  destAddrUdp.sin_family = AF_INET;
  destAddrUdp.sin_port = htons(9010);
-
+// On déclate le message que l'on veut envoyé au serveur, dans notre cas "bonjour"
 char buffer[8];
  buffer[0]= 'b';
  buffer[1]= 'o';
@@ -36,12 +39,14 @@ char buffer[8];
  buffer[7] = '\0';
  socklen_t tailleudp = sizeof(destAddrUdp);
  int error_message;
+ // Envoie du message au serveur
  error_message = sendto(sock,buffer,sizeof(buffer),0,
 (SOCKADDR*)&destAddrUdp,sizeof(destAddrUdp));
+// Gestion d'erreur de la méthode sendto
  if(error_message == 0){
  fprintf(stderr, "sendto message erreur : %s\n", strerror(errno));
  }
-
+// Fermeture du socket
 close(sock);
 
 }

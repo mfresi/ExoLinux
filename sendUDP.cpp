@@ -5,6 +5,8 @@
 #include "sendUDP.h"
 #include <winsock2.h>
 
+// Déclaration des méthodes de la classe sendUDP
+
 using  namespace std;
 
 sendUDP::sendUDP()
