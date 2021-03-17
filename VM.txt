@@ -1,7 +1,7 @@
 mariadb :
 
 	- apt-get install mariadb-server
-	- mysq_secure_installation {
+	- mysql_secure_installation {
 					Change the root password ? Y
 					remove anonymous users ? Y
 					Disallow root login remotely ? n
@@ -24,7 +24,7 @@ phpmyadmin :
 	
 	- apt-get install wget
 	- wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz
-	- tar xvf (pour décompresser)
+	- tar xvf (pour dÃ©compresser)
 	- mysql -p 
 	- SET PASSWORD FOR root@localhost=PASSWORD('root');
 	- GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY 'root' WITH GRANT OPTION;	
