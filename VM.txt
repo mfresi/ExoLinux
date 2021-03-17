@@ -1,0 +1,50 @@
+mariadb :
+
+	- apt-get install mariadb-server
+	- mysq_secure_installation {
+					Change the root password ? Y
+					remove anonymous users ? Y
+					Disallow root login remotely ? n
+					Remove tes database and access to it ? Y
+					Reload privilege tables now ? Y
+				   }
+
+apache2 : 		
+	
+	- apt-get install apache2
+
+php7.3 :
+
+	- apt-get install php7.3 php-mysql php-xml
+	- apache2ctl -M
+	- a2enmode php7.3
+	
+	 
+phpmyadmin :
+	
+	- apt-get install wget
+	- wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0/phpMyAdmin-5.1.0-all-languages.tar.gz
+	- tar xvf (pour décompresser)
+	- mysql -p 
+	- SET PASSWORD FOR root@localhost=PASSWORD('root');
+	- GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY 'root' WITH GRANT OPTION;	
+	- quit
+
+samba :
+
+	- apt-get install samba samba-common-bin
+	- [debian]
+	  comment = Partage de mon dossier via Samba
+	  path = /home/debian
+	  writable = yes
+	  guest ok = no
+          guest only = no
+ 	  create mode = 0777
+ 	  directory mode = 0777
+	  share modes = yes
+	
+	- smbpasswd -a
+
+
+
+
