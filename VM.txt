@@ -46,5 +46,17 @@ samba :
 	- smbpasswd -a
 
 
+Reglez probleme de pdo : 
+
+installer mysql
+
+cd /etc/php/7.3/apache2
+nano php.ini
+
+descendre jusqu'au extension -> 
+;extension=pdo_mysql -> rajouter .so a la fin -> ;extension=pdo_mysql.so
+ rajouter en dessous extension=pdo_mysql.so-> ;extension=pdo.so
+
+
 
 
