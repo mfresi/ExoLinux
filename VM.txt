@@ -45,6 +45,9 @@ samba :
 	
 	- smbpasswd -a
 
+dependance mysql :
+
+	apt-get install libmariadb-dev-compat:amd64
 
 Reglez probleme de pdo : 
 
